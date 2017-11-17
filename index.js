@@ -108,6 +108,8 @@ app.get('/', (req, res) =>{
   })
 });
 
+var port = process.env.PORT || 5000;
+
 app.get('/db',(req,res)=>{
   Links.findAll({
     where:{}
@@ -118,12 +120,12 @@ app.get('/db',(req,res)=>{
   })
 });
 
-app.listen(5000, () => {
-  Links.sync({force: true}).then(() => {
+app.listen(port, () => {
+  Links.sync().then(() => {
   // Table created
   var j = schedule.scheduleJob('*/1 * * * *', function(){
     console.log("-------------------------------------------");
-    fetchUrl("http://localhost:5000", function(error, meta, body){
+    fetchUrl("http://localhost:"+port, function(error, meta, body){
       console.log(body.toString());
     });
   });
