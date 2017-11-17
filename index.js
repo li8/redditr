@@ -123,7 +123,7 @@ app.get('/db',(req,res)=>{
 app.listen(port, () => {
   Links.sync().then(() => {
   // Table created
-  var j = schedule.scheduleJob('*/1 * * * *', function(){
+  var j = schedule.scheduleJob('*/5 * * * *', function(){
     console.log("-------------------------------------------");
     fetchUrl("http://localhost:"+port, function(error, meta, body){
       console.log(body.toString());
