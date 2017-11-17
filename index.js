@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const fetchUrl = require("fetch").fetchUrl;
 var schedule = require('node-schedule');
+var path = require('path');
 
 // sequelize
 const Sequelize = require('sequelize');
@@ -53,7 +54,7 @@ var recur = (count,objArr,cb)=>{
 
   if(objArr.length > 0 ){
     // console.log("slow ",objArr.length);
-    // console.log("slow ",JSON.stringify(objArr[objArr.length - 1]) );
+    // console.log("slow ",JSON. (objArr[objArr.length - 1]) );
     var url = "http://www.reddit.com/r/worldnews/new.json?count="+objArr.length+"&after="+objArr[objArr.length-1].kind+"_"+objArr[objArr.length-1].pid;
   }
   console.log("------------------");
