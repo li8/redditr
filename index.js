@@ -95,7 +95,7 @@ var recur = (count,objArr,cb)=>{
 }
 
 
-app.get('/', (req, res) =>{
+app.get('/sync', (req, res) =>{
   recur(100,[],(obj)=>{
     console.log(obj.length);
     Links.findAll({
@@ -110,7 +110,7 @@ app.get('/', (req, res) =>{
 
 var port = process.env.PORT || 5000;
 
-app.get('/db',(req,res)=>{
+app.get('/',(req,res)=>{
   Links.findAll({
     where:{}
   }).then(links=>{
@@ -125,7 +125,7 @@ app.listen(port, () => {
   // Table created
   var j = schedule.scheduleJob('*/5 * * * *', function(){
     console.log("-------------------------------------------");
-    fetchUrl("http://localhost:"+port, function(error, meta, body){
+    fetchUrl("http://localhost:"+port+"/sync", function(error, meta, body){
       console.log(body.toString());
     });
   });
