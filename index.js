@@ -120,6 +120,12 @@ app.get('/',(req,res)=>{
   })
 });
 
+
+app.get('/download',(req,res)=>{
+  // res.send({count:links.length,links:links})
+  res.sendFile(path.join(__dirname, 'reddit.sqlite'));
+});
+
 app.listen(port, () => {
   Links.sync().then(() => {
   // Table created
