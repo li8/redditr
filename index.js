@@ -52,8 +52,8 @@ var recur = (count,objArr,cb)=>{
   var url = "http://www.reddit.com/r/worldnews/new.json";
 
   if(objArr.length > 0 ){
-    console.log("slow ",objArr.length);
-    console.log("slow ",JSON.stringify(objArr[objArr.length - 1]) );
+    // console.log("slow ",objArr.length);
+    // console.log("slow ",JSON.stringify(objArr[objArr.length - 1]) );
     var url = "http://www.reddit.com/r/worldnews/new.json?count="+objArr.length+"&after="+objArr[objArr.length-1].kind+"_"+objArr[objArr.length-1].pid;
   }
   console.log("------------------");
@@ -114,7 +114,7 @@ app.get('/',(req,res)=>{
   Links.findAll({
     where:{}
   }).then(links=>{
-    res.send(links)
+    res.send({count:links.length,links:links})
   }).catch(err=>{
     console.log(err);
   })

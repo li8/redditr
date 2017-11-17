@@ -4,3 +4,4 @@ package-lock.json
 reddit.sqlite
 watch.sh
 
+reddit.sqlite-journal
